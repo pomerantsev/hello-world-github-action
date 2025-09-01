@@ -1,8 +1,17 @@
 name: "hello-node-action"
 description: "Replies to @hello comments"
 runs:
-  using: "node24"          # node20 or node22 supported
-  main: "src/index.mjs"    # no build step
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24.x
+    - run: npm ci
+      shell: bash
+    - run: node src/index.mjs
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
 inputs:
   message:
     description: "Reply message"
