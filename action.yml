@@ -7,4 +7,4 @@ inputs:
   message:
     description: "Reply message"
     required: false
-    default: "👋 Hello from the Action!"
+    default: "👋 Hello from the Action (default)!"
