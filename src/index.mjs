@@ -19,6 +19,9 @@ try {
   const token = process.env.GITHUB_TOKEN;
   if (!token) throw new Error("GITHUB_TOKEN is missing.");
 
+  // Works for both composite (env) and JS actions (core.getInput)
+  const message = process.env.INPUT_MESSAGE;
+
   const octokit = github.getOctokit(token);
   const { owner, repo } = context.repo;
   const issue_number = issue.number;
@@ -27,7 +30,7 @@ try {
     owner,
     repo,
     issue_number,
-    body: core.getInput("message"),
+    body: message,
     headers: { "X-GitHub-Api-Version": "2022-11-28" }
   });
 

@@ -14,6 +14,7 @@ runs:
       working-directory: ${{ github.action_path }}
       env:
         GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        INPUT_MESSAGE: ${{ inputs.message }}   # ← expose input to the script
 inputs:
   message:
     description: "Reply message"
