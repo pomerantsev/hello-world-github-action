@@ -1,0 +1,10 @@
+name: "hello-node-action"
+description: "Replies to @hello comments"
+runs:
+  using: "node22"          # node20 or node22 supported
+  main: "src/index.mjs"    # no build step
+inputs:
+  message:
+    description: "Reply message"
+    required: false
+    default: "👋 Hello from the Action!"
